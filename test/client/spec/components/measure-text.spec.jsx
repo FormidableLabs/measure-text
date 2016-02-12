@@ -26,12 +26,13 @@ describe("components/measure-text", () => {
       fontStyle: "normal",
       canvas: new MockCanvas()
     });
+
     expect(measurement).to.have.deep.property("width", "42px");
     expect(measurement).to.have.deep.property("height", `${24 * 1.2}px`);
   });
 
   it("should measure all lines of text in an array", () => {
-    const measurements = measureText({
+    const measurement = measureText({
       text: [
         "The quick brown fox jumps over the lazy dog",
         "The lazy fox jumps over the quick brown dog",
@@ -44,16 +45,13 @@ describe("components/measure-text", () => {
       fontStyle: "italic",
       canvas: new MockCanvas()
     });
-
-    measurements.forEach((measurement) => {
-      expect(measurement).to.have.deep.property("width", "42px");
-      expect(measurement).to.have.deep.property("height", `${24 * 1.2}px`);
-    });
+    expect(measurement).to.have.deep.property("width", "42px");
+    expect(measurement).to.have.deep.property("height", `${(24 * 1.2) * 3}px`);
   });
 
   it(`should calculate height when provided a
       px font size and a unitless line height`, () => {
-    const measurements = measureText({
+    const measurement = measureText({
       text: [
         "The quick brown fox jumps over the lazy dog",
         "The lazy fox jumps over the quick brown dog",
@@ -67,9 +65,7 @@ describe("components/measure-text", () => {
       canvas: new MockCanvas()
     });
 
-    measurements.forEach((measurement) => {
-      expect(measurement).to.have.deep.property("height", `${16 * 1.45}px`);
-    });
+    expect(measurement).to.have.deep.property("height", `${(16 * 1.45) * 3}px`);
   });
 
   it(`should calculate height when provided a
