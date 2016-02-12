@@ -11,7 +11,6 @@ const parseUnitless = (value) => {
     return value;
   }
   if (isNumericOnly(value)) {
-
     return parseFloat(value);
   }
   return null;
@@ -52,9 +51,8 @@ const measureText = ({
   lineHeight,
   fontWeight = DEFAULT_FONT_WEIGHT,
   fontStyle = DEFAULT_FONT_STYLE,
-  canvas: userCanvas
+  canvas = globalCanvas
 }) => {
-  const canvas = userCanvas ? userCanvas : globalCanvas;
   const ctx = canvas.getContext("2d");
   ctx.font = `${fontWeight} ${fontStyle} ${fontSize} ${fontFamily}`;
 
