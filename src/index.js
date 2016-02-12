@@ -49,19 +49,11 @@ const measureText = ({
   lineHeight,
   fontWeight = 400,
   fontStyle = "normal",
-  canvas
+  canvas: userCanvas
 }) => {
-
-  // If the user doesn't pass a reusable canvas,
-  // just create a new one.
-  if (!canvas) {
-    canvas = document.createElement("canvas");
-  }
-
-  // Set the font to get accurate metrics.
-  canvas.font = `${fontWeight} ${fontStyle} ${fontSize} ${fontFamily}`;
-
+  const canvas = userCanvas ? userCanvas : globalCanvas;
   const ctx = canvas.getContext("2d");
+  ctx.font = `${fontWeight} ${fontStyle} ${fontSize} ${fontFamily}`;
 
   const measure = (line) => {
     return {
