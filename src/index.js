@@ -2,6 +2,8 @@
 // import memoize from "lodash.memoize";
 import isFinite from "lodash.isFinite";
 
+const globalCanvas = document.createElement("canvas");
+
 const isNumericOnly = (string) => /^[0-9.,]+$/.test(string);
 
 const parseUnitless = (value) => {
