@@ -26,7 +26,7 @@ describe("components/measure-text", () => {
       fontStyle: "normal",
       canvas: new MockCanvas()
     });
-    expect(measurement).to.have.deep.property("width", 42);
+    expect(measurement).to.have.deep.property("width", "42px");
     expect(measurement).to.have.deep.property("height", `${24 * 1.2}px`);
   });
 
@@ -46,7 +46,7 @@ describe("components/measure-text", () => {
     });
 
     measurements.forEach((measurement) => {
-      expect(measurement).to.have.deep.property("width", 42);
+      expect(measurement).to.have.deep.property("width", "42px");
       expect(measurement).to.have.deep.property("height", `${24 * 1.2}px`);
     });
   });

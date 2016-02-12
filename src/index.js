@@ -60,7 +60,7 @@ const measureText = ({
 
   const measure = (line) => {
     return {
-      width: ctx.measureText(line).width,
+      width: `${ctx.measureText(line).width}px`,
       height: calculateHeight(fontSize, lineHeight)
     };
   };
