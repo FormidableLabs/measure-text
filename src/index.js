@@ -42,13 +42,16 @@ const calculateHeight = (size, lineHeight) => {
   return lineHeight;
 };
 
+const DEFAULT_FONT_WEIGHT = 400;
+const DEFAULT_FONT_STYLE = "normal";
+
 const measureText = ({
   text,
   fontFamily,
   fontSize,
   lineHeight,
-  fontWeight = 400,
-  fontStyle = "normal",
+  fontWeight = DEFAULT_FONT_WEIGHT,
+  fontStyle = DEFAULT_FONT_STYLE,
   canvas: userCanvas
 }) => {
   const canvas = userCanvas ? userCanvas : globalCanvas;
