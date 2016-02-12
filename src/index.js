@@ -1,6 +1,6 @@
 /* eslint-env browser */
 // import memoize from "lodash.memoize";
-import isFinite from "lodash.isFinite";
+import isFinite from "lodash.isfinite";
 
 const globalCanvas = document.createElement("canvas");
 
