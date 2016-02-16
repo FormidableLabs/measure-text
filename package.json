@@ -1,6 +1,6 @@
 {
   "name": "measure-text",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "An efficient text measurement function for the browser.",
   "main": "lib/index.js",
   "repository": {
