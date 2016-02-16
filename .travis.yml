@@ -22,9 +22,9 @@ before_install:
 
 script:
   - npm --version
-  - node_modules/.bin/builder run check-ci
+  - npm run-script check-ci
 
   # Prune deps to just production and ensure we can still build
   - npm prune --production
-  - node_modules/.bin/builder run build
+  - npm run-script build
   - cat coverage/client/*/lcov.info | node_modules/.bin/coveralls || echo "Coveralls upload failed"
