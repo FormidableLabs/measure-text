@@ -16,7 +16,8 @@ class MockCanvas {
 }
 
 describe("measure-text", () => {
-  it("should measure a single line of text", () => {
+  it(`should measure a single line of text provided a
+      px font size and a unitless line height`, () => {
     const measurement = measureText({
       text: "The quick brown fox jumps over the lazy dog",
       fontFamily: "Helvetica Neue",
@@ -31,7 +32,8 @@ describe("measure-text", () => {
     expect(measurement).to.have.property("height", `${24 * 1.2}px`);
   });
 
-  it("should measure all lines of text in an array", () => {
+  it(`should measure multiline text provided a
+      px font size and a unitless line height`, () => {
     const measurement = measureText({
       text: [
         "The quick brown fox jumps over the lazy dog",
@@ -47,25 +49,6 @@ describe("measure-text", () => {
     });
     expect(measurement).to.have.property("width", "42px");
     expect(measurement).to.have.property("height", `${(24 * 1.2) * 3}px`);
-  });
-
-  it(`should calculate height when provided a
-      px font size and a unitless line height`, () => {
-    const measurement = measureText({
-      text: [
-        "The quick brown fox jumps over the lazy dog",
-        "The lazy fox jumps over the quick brown dog",
-        "The dog jumps over the quick, lazy brown fox"
-      ],
-      fontFamily: "Helvetica Neue",
-      fontSize: "16px",
-      lineHeight: "1.45",
-      fontWeight: "300",
-      fontStyle: "normal",
-      canvas: new MockCanvas()
-    });
-
-    expect(measurement).to.have.property("height", `${(16 * 1.45) * 3}px`);
   });
 
   it(`should calculate height when provided a
