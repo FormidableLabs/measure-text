@@ -15,7 +15,7 @@ class MockCanvas {
   }
 }
 
-describe("components/measure-text", () => {
+describe("measure-text", () => {
   it("should measure a single line of text", () => {
     const measurement = measureText({
       text: "The quick brown fox jumps over the lazy dog",
@@ -27,8 +27,8 @@ describe("components/measure-text", () => {
       canvas: new MockCanvas()
     });
 
-    expect(measurement).to.have.deep.property("width", "42px");
-    expect(measurement).to.have.deep.property("height", `${24 * 1.2}px`);
+    expect(measurement).to.have.property("width", "42px");
+    expect(measurement).to.have.property("height", `${24 * 1.2}px`);
   });
 
   it("should measure all lines of text in an array", () => {
@@ -45,8 +45,8 @@ describe("components/measure-text", () => {
       fontStyle: "italic",
       canvas: new MockCanvas()
     });
-    expect(measurement).to.have.deep.property("width", "42px");
-    expect(measurement).to.have.deep.property("height", `${(24 * 1.2) * 3}px`);
+    expect(measurement).to.have.property("width", "42px");
+    expect(measurement).to.have.property("height", `${(24 * 1.2) * 3}px`);
   });
 
   it(`should calculate height when provided a
@@ -65,7 +65,7 @@ describe("components/measure-text", () => {
       canvas: new MockCanvas()
     });
 
-    expect(measurement).to.have.deep.property("height", `${(16 * 1.45) * 3}px`);
+    expect(measurement).to.have.property("height", `${(16 * 1.45) * 3}px`);
   });
 
   it(`should calculate height when provided a
@@ -80,7 +80,7 @@ describe("components/measure-text", () => {
       canvas: new MockCanvas()
     });
 
-    expect(measurement).to.have.deep.property("height", `${2 * 1.3}em`);
+    expect(measurement).to.have.property("height", `${2 * 1.3}em`);
   });
 
   it(`should calculate height when provided a
@@ -95,6 +95,6 @@ describe("components/measure-text", () => {
       canvas: new MockCanvas()
     });
 
-    expect(measurement).to.have.deep.property("height", "40px");
+    expect(measurement).to.have.property("height", "40px");
   });
 });
