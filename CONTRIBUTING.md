@@ -4,12 +4,7 @@ Contributing
 Thanks for helping out!
 
 ## Development
-
-Run `builder run open-dev` to run a webpack dev server with component examples.
-
-## Checks, Tests
-
-Run `builder run check` before committing.
+Run `npm run-script check` before committing.
 
 ## Dist
 
