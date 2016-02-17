@@ -58,6 +58,7 @@ const measureText = ({
 
   const measure = (line) => {
     return {
+      text: line,
       width: units.parse(`${ctx.measureText(line).width}px`),
       height: measureHeight(
         units.parse(fontSize),
@@ -77,12 +78,22 @@ const measureText = ({
         const height = units.parse(
           `${prev.height.value + curr.height.value}${curr.height.unit}`
         );
-        return { width, height };
+        const longest = curr.text.length > prev.text.length
+          ? curr.text : prev.text;
+        return { width, height, text: longest };
       });
-    return stringifyMeasurements(measurements);
+
+    return {
+      ...stringifyMeasurements(measurements),
+      averageCharWidth: measurements.width.value / measurements.text.length
+    };
   }
 
-  return stringifyMeasurements(measure(text));
+  const measurements = measure(text);
+  return {
+    ...stringifyMeasurements(measurements),
+    averageCharWidth: measurements.width.value / text.length
+  };
 };
 
 export default measureText;

@@ -80,4 +80,34 @@ describe("measure-text", () => {
 
     expect(measurement).to.have.property("height", "40px");
   });
+
+  it(`should calculate the average character width
+      of a single line of text`, () => {
+    const measurement = measureText({
+      text: "The quick brown fox jumps over the lazy dog",
+      fontFamily: "Helvetica Neue",
+      fontSize: "24px",
+      lineHeight: "1.2",
+      canvas: new MockCanvas()
+    });
+
+    expect(measurement).to.have.property("averageCharWidth", 42 / 43);
+  });
+
+  it(`should calculate the average character width
+      of the longest string in multiline text`, () => {
+    const measurement = measureText({
+      text: [
+        "The quick brown fox jumps over the lazy dog",
+        "The lazy fox jumps over the quick brown dog",
+        "The dog jumps over the quick, lazy brown fox"
+      ],
+      fontFamily: "Helvetica Neue",
+      fontSize: "24px",
+      lineHeight: "1.2",
+      canvas: new MockCanvas()
+    });
+
+    expect(measurement).to.have.property("averageCharWidth", 42 / 44);
+  });
 });
