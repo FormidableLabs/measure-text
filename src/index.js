@@ -37,13 +37,6 @@ const measureHeight = (size, lineHeight) => {
   );
 };
 
-const stringifyMeasurements = ({ width, height }) => {
-  return {
-    width: `${width.value}${width.unit}`,
-    height: `${height.value}${height.unit}`
-  };
-};
-
 const measureText = ({
   text,
   fontFamily,
@@ -70,7 +63,7 @@ const measureText = ({
   // If multiline, measure the bounds
   // of all of the lines combined
   if (Array.isArray(text)) {
-    const measurements = text
+    return text
       .map(measure)
       .reduce((prev, curr) => {
         const width = curr.width.value > prev.width.value
@@ -82,18 +75,9 @@ const measureText = ({
           ? curr.text : prev.text;
         return { width, height, text: longest };
       });
-
-    return {
-      ...stringifyMeasurements(measurements),
-      averageCharWidth: measurements.width.value / measurements.text.length
-    };
   }
 
-  const measurements = measure(text);
-  return {
-    ...stringifyMeasurements(measurements),
-    averageCharWidth: measurements.width.value / text.length
-  };
+  return measure(text);
 };
 
 export default measureText;

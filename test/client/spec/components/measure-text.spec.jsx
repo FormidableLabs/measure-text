@@ -28,8 +28,10 @@ describe("measure-text", () => {
       canvas: new MockCanvas()
     });
 
-    expect(measurement).to.have.property("width", "42px");
-    expect(measurement).to.have.property("height", `${24 * 1.2}px`);
+    expect(measurement).to.have.deep.property("width.value", 42);
+    expect(measurement).to.have.deep.property("height.value", 24 * 1.2);
+    expect(measurement).to.have.deep.property("width.unit", "px");
+    expect(measurement).to.have.deep.property("height.unit", "px");
   });
 
   it(`should measure multiline text provided a
@@ -47,8 +49,10 @@ describe("measure-text", () => {
       fontStyle: "italic",
       canvas: new MockCanvas()
     });
-    expect(measurement).to.have.property("width", "42px");
-    expect(measurement).to.have.property("height", `${(24 * 1.2) * 3}px`);
+    expect(measurement).to.have.deep.property("width.value", 42);
+    expect(measurement).to.have.deep.property("height.value", (24 * 1.2) * 3);
+    expect(measurement).to.have.deep.property("width.unit", "px");
+    expect(measurement).to.have.deep.property("height.unit", "px");
   });
 
   it(`should calculate height when provided a
@@ -63,7 +67,8 @@ describe("measure-text", () => {
       canvas: new MockCanvas()
     });
 
-    expect(measurement).to.have.property("height", `${2 * 1.3}em`);
+    expect(measurement).to.have.deep.property("height.value", 2 * 1.3);
+    expect(measurement).to.have.deep.property("height.unit", "em");
   });
 
   it(`should calculate height when provided a
@@ -78,36 +83,7 @@ describe("measure-text", () => {
       canvas: new MockCanvas()
     });
 
-    expect(measurement).to.have.property("height", "40px");
-  });
-
-  it(`should calculate the average character width
-      of a single line of text`, () => {
-    const measurement = measureText({
-      text: "The quick brown fox jumps over the lazy dog",
-      fontFamily: "Helvetica Neue",
-      fontSize: "24px",
-      lineHeight: "1.2",
-      canvas: new MockCanvas()
-    });
-
-    expect(measurement).to.have.property("averageCharWidth", 42 / 43);
-  });
-
-  it(`should calculate the average character width
-      of the longest string in multiline text`, () => {
-    const measurement = measureText({
-      text: [
-        "The quick brown fox jumps over the lazy dog",
-        "The lazy fox jumps over the quick brown dog",
-        "The dog jumps over the quick, lazy brown fox"
-      ],
-      fontFamily: "Helvetica Neue",
-      fontSize: "24px",
-      lineHeight: "1.2",
-      canvas: new MockCanvas()
-    });
-
-    expect(measurement).to.have.property("averageCharWidth", 42 / 44);
+    expect(measurement).to.have.deep.property("height.value", 40);
+    expect(measurement).to.have.deep.property("height.unit", "px");
   });
 });
