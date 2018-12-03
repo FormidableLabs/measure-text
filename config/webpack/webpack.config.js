@@ -42,8 +42,8 @@ module.exports = {
     libraryTarget: 'umd'
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
-    modules: [__dirname, 'node_modules'],
+    extensions: ['', '.js', '.jsx'],
+    root: [path.resolve(__dirname, 'src')],
     unsafeCache: true
   },
   module: {
