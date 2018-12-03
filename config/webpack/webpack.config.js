@@ -42,8 +42,8 @@ module.exports = {
     libraryTarget: 'umd'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-    root: [path.resolve(__dirname, 'src')],
+    extensions: ['.js', '.jsx'],
+    modules: [__dirname, 'node_modules'],
     unsafeCache: true
   },
   module: {
@@ -57,7 +57,7 @@ module.exports = {
         loader: require.resolve('babel-loader'),
         query: {
           babelrc: false,
-          presets: ['es2015-webpack', 'stage-2', 'react'],
+          presets: ['es2015', 'stage-2', 'react'],
           plugins: [
             'syntax-class-properties',
             'syntax-decorators',
